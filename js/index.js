@@ -21,9 +21,9 @@ window.onload = async function() {
 async function Initmetamask(){
     
     if (window.ethereum !== undefined){
-        document.getElementById("message").innerHTML = "Connected MetaMask";
+        SetMainMessage("Connected MetaMask");
     } else {
-        document.getElementById("message").innerHTML = "Please open MetaMask";        
+        SetMainMessage("Please open MetaMask");
     }
 
     provider = await new ethers.providers.Web3Provider(window.ethereum);
@@ -31,12 +31,27 @@ async function Initmetamask(){
     useraddress = await signer.getAddress();    
     jpyccontract = await new ethers.Contract( jpyc_on_fuji , abi, signer );
     balance = await jpyccontract.balanceOf(useraddress) * 10e-19;
-    document.getElementById("message").innerHTML = document.getElementById("message").innerHTML + balance + "JPYC持っています";
+    document.getElementById("message").innerHTML += balance + "JPYC";
 }
 
 async function Approve(){
-    success = await jpyccontract.approve(useraddress, 100000 * 10e+19);
+    success = await jpyccontract.approve(useraddress, 10000000 * 10e+19);
     console.log(success);
+    SetMainMessage("approve is " + success);
+}
+
+async function NewApplication(){
+    newApp = await jpyccontract.newApplication(100000 * 10e+19, 19, 1630130410);
+    SetMainMessage("insurance contract: " + newApp);
+}
+
+async function ClaimInsurance(){
+    claim = await jpyccontract.claimInsurance(1);
+    SetMainMessage("claim for insurance is: " + claim);
+}
+
+function SetMainMessage(message) {
+    document.getElementById("message").innerHTML = message;
 }
 
 let a;
