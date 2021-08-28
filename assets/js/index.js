@@ -34,7 +34,7 @@ async function initmetamask(){
 }
 
 async function Approve(){
-    success = await approve(shopwalletaddress, 10 * 10e+19);
+    success = await approve(shopwalletaddress, 100000 * 10e+19);
     console.log(success);
 }
 
