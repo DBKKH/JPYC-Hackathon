@@ -71,9 +71,11 @@ function SetMainMessage(message) {
 let a;
 
 async function TokenPayment(){
-    document.getElementById("message").innerHTML = "ボタンが押されました。お支払いを開始します";
+    SetMainMessage("Could connect your wallet. You can make contract with our Insurance.");
+
     let options = { gasPrice: 10000000000 , gasLimit: 100000};
     const jpycprice = ethers.utils.parseUnits( pricing.toString() , 18);
+    
     jpyccontract.transfer( shopwalletaddress , jpycprice , options ).catch((error) => {
     a=error;
     document.getElementById("message").innerHTML = error.code + "<br>" + error.message + "<br>" + error.stack + "<br>" + error.data + "<br>" + JSON.stringify(error);
@@ -96,6 +98,7 @@ async function ChangeToMatic(){
         blockExplorerUrls: ['https://cchain.explorer.avax-test.network'],
     }]
         /* eslint-disable */
-        const tx = await ethereum.request({method: 'wallet_addEthereumChain', params:data}).catch()
-    document.getElementById("message").innerHTML = "準備ができました。お支払いボタンを押すと、お支払いできます<br><br>"
+        const tx = await ethereum.request({method: 'wallet_addEthereumChain', params:data}).catch();
+
+        SetMainMessage("Could connect your wallet. You can make contract with our Insurance.<br> <br>");
 }
