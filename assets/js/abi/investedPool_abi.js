@@ -1,0 +1,1 @@
+﻿var investedPool_abi =[]
