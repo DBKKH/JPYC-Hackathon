@@ -1,6 +1,6 @@
 
 //お店のアドレス
-shopwalletaddress = "0x131231C27A749991270805Ae48754FABB2466d7F";
+shopwalletaddress = "0xc504D069e291d8011c0Ca0E30731D97c702eF38C";
 
 //お値段(JPYC)
 pricing = 500;
@@ -11,5 +11,5 @@ image = "https://3.bp.blogspot.com/-9GGxkWC2bqM/UYns8kr1stI/AAAAAAAARbw/feLZrPmV
 
 
 //JPYC address
-jpyc_on_matic = "0x6AE7Dfc73E0dDE2aa99ac063DcF7e8A63265108c";
+jpyc_on_matic = "0x1f27ef271970Cd0651D2aCA38EA8210DA77E41C1";
 
