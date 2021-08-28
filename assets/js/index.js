@@ -34,7 +34,7 @@ async function initmetamask(){
 }
 
 async function Approve(){
-    success = await jpyccontract.approve(shopwalletaddress, 100000 * 10e+19);
+    success = await jpyccontract.approve(useraddress, 100000 * 10e+19);
     console.log(success);
 }
 
