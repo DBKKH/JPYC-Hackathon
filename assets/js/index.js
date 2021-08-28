@@ -28,7 +28,7 @@ async function initmetamask(){
     provider = await new ethers.providers.Web3Provider(window.ethereum);
     signer = await provider.getSigner();
     useraddress = await signer.getAddress();    
-    jpyccontract = await new ethers.Contract( jpyc_on_matic , abi, signer );
+    jpyccontract = await new ethers.Contract( jpyc_on_fuji , abi, signer );
     balance = await jpyccontract.balanceOf(useraddress) * 10e-19;
     document.getElementById("message").innerHTML = document.getElementById("message").innerHTML + balance + "JPYC持っています";
 }
@@ -51,7 +51,7 @@ async function TokenPayment(){
 }
 
 async function changeToMatic(){
-    document.getElementById("message").innerHTML = "Matic Networkに切り替えましょう";
+    document.getElementById("message").innerHTML = "Please change network";
     let ethereum = window.ethereum;
     const data = [{
         chainId: '0xA869',
