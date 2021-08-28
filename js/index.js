@@ -11,8 +11,6 @@ function walletmodal(){
 
 window.onload = async function() {
     ethereum.on('chainChanged', (_chainId) => window.location.reload());
-    mainimage = document.getElementById("mainimage");
-    mainimage.src = image;
     ChangeToMatic();
     Initmetamask();
 }
@@ -28,25 +26,41 @@ async function Initmetamask(){
 
     provider = await new ethers.providers.Web3Provider(window.ethereum);
     signer = await provider.getSigner();
-    useraddress = await signer.getAddress();    
-    jpyccontract = await new ethers.Contract( jpyc_on_fuji , abi, signer );
-    balance = await jpyccontract.balanceOf(useraddress) * 10e-19;
+    userAddress = await signer.getAddress();    
+    
+    MakeJpycContract();
+    MakeRiskPoolContract();
+    MakeInvestedPoolContract();
+}
+
+async function MakeJpycContract(){
+    jpyccontract = await new ethers.Contract( jpyc_on_fuji , JpycFuji_abi, signer );
+    balance = await jpyccontract.balanceOf(userAddress) * 10e-19;
     document.getElementById("message").innerHTML += balance + "JPYC";
 }
 
+async function MakeRiskPoolContract(){
+    riskPoolContract = await new ethers.Contract( riskPoolAddress , riskPool_abi, signer );
+}
+
+
+async function MakeInvestedPoolContract(){
+    riskPoolContract = await new ethers.Contract( investedPoolAddress , riskPool_abi, signer );
+}
+
 async function Approve(){
-    success = await jpyccontract.approve(useraddress, 10000000 * 10e+19);
+    success = await jpyccontract.approve(userAddress, 10000000 * 10e+19);
     console.log(success);
     SetMainMessage("approve is " + success);
 }
 
 async function NewApplication(){
-    newApp = await jpyccontract.newApplication(100000 * 10e+19, 19, 1630130410);
+    newApp = await riskPoolContract.newApplication(100000 * 10e+19, 19, 1630130410);
     SetMainMessage("insurance contract: " + newApp);
 }
 
 async function ClaimInsurance(){
-    claim = await jpyccontract.claimInsurance(1);
+    claim = await riskPoolContract.claimInsurance(1);
     SetMainMessage("claim for insurance is: " + claim);
 }
 
