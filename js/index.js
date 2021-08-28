@@ -13,18 +13,19 @@ window.onload = async function() {
     ethereum.on('chainChanged', (_chainId) => window.location.reload());
     mainimage = document.getElementById("mainimage");
     mainimage.src = image;
-    changeToMatic();
-    initmetamask();
+    ChangeToMatic();
+    Initmetamask();
 }
 
 
-
-async function initmetamask(){
+async function Initmetamask(){
+    
     if (window.ethereum !== undefined){
-        document.getElementById("message").innerHTML = "MetaMask Mobileに接続しました";
+        document.getElementById("message").innerHTML = "Connected MetaMask";
     } else {
-        document.getElementById("message").innerHTML = "MetaMask Mobileでこのページを開いてください";        
+        document.getElementById("message").innerHTML = "Please open MetaMask";        
     }
+
     provider = await new ethers.providers.Web3Provider(window.ethereum);
     signer = await provider.getSigner();
     useraddress = await signer.getAddress();    
@@ -50,7 +51,7 @@ async function TokenPayment(){
     });
 }
 
-async function changeToMatic(){
+async function ChangeToMatic(){
     document.getElementById("message").innerHTML = "Please change network";
     let ethereum = window.ethereum;
     const data = [{

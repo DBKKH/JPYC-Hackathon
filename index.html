@@ -4,29 +4,29 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>JPYC_Shop_Maker</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Derivative Earthquake Insurance</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 
 <body style="background: linear-gradient(90deg, rgb(31, 64, 255) 0%, rgb(206,199,236));">
-    <div class="row">
+    
+    <!-- <div class="row">
         <div class="col">
             <h1 class="text-center"> Insurance </h1>
         </div>
     </div>
     <div class="row">
         <div class="col-2 offset-5">
-            <div class="text-center" style="width: 100%;"><img id="mainimage" src="assets/img/tropical_drink.png"
+            <div class="text-center" style="width: 100%;"><img id="mainimage" src="img/tropical_drink.png"
                     style="width: 100%;" width="100%">
                 <h2 class="text-center" id="pricing">JPYC on AVAX</h2><a class="btn btn-info text-center" role="button"
                     href="javascript:TokenPayment()">JPYC Payment</a>
             </div>
-        </div>
+        </div> -->
 
         <!-- <input type="hidden" name="jpyc_value" placeholder="100"> -->
 
-        <div class="col-2 offset-1">
+        <!-- <div class="col-2 offset-1">
             <h2 class="text-center" id="approval"></h2><a class="btn btn-info text-center" role="button"
                 href="javascript:Approve()">Approve</a>
         </div>
@@ -45,8 +45,8 @@
                 </div>
                 <div class="modal-body">
                     <div style="text-align: center;"><a href="javascript:loadwallet()"><img
-                                src="assets/img/mm-logo.svg"></a><a href="javascript:loadTorus()"><img
-                                src="assets/img/torus-wordmark-blue-p-500.png"
+                                src="img/mm-logo.svg"></a><a href="javascript:loadTorus()"><img
+                                src="img/torus-wordmark-blue-p-500.png"
                                 style="width: 100px;margin-left: 32px;"></a></div>
                 </div>
                 <div class="modal-footer">
@@ -54,14 +54,70 @@
                 </div>
             </div>
         </div>
+    </div> -->
+    
+    <div id="content">
+        <img src="img/jpyc-icon.png" class="ribbon"/>
+        <div>some text...</div>
     </div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/abi.js"></script>
+    <div class="row">
+        <div class="col">
+            <h2 id="message" style="margin-top: 50px;text-align: center;">Loading...</h2>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputEmail4">First name</label>
+            <input type="text" class="form-control" id="first_name" placeholder="Tarou">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputPassword4">Last name</label>
+            <input type="text" class="form-control" id="last_name" placeholder="Dann">
+        </div>
+    </div>
+    
+    <div class="form-group col-md-2">
+        <label for="inputPassword4">Country</label>
+        <input type="text" class="form-control" id="country_input" placeholder="Japan">
+    </div>
+    
+    <div>
+        <div class="form-group col-md-3">
+            <label for="inputPassword4">Post Code</label>
+            <input type="text" class="form-control" id="post_code_input" placeholder="123-4567">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputPassword4">Address</label>
+            <input type="text" class="form-control" id="address_input" placeholder="東京都新宿区1-1-1">
+        </div>
+    </div>
+
+    <div class="form-group col-md-2">
+        <label for="inputPassword4">jpyc</label>
+        <input type="text" class="form-control" id="jpyc_value" placeholder="Japan">
+    </div>
+    
+
+    
+    <!--  for contract scripts  -->
+    <script type="text/javascript" src="js/libs/jquery.min.js"></script>
+    <script src="js/libs/ethers-5.0.umd.min.js"></script>
+
+    <script src="js/index.js"></script>
+    <script src="js/setting.js"></script>
+
+    <script src="js/abi/JpycFuji_abi.js"></script>
+    <script src="js/abi/riskPool_abi.js"></script>
+    <script src="js/abi/investedPool_abi.js"></script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/abi.js"></script>
     <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js"></script>
-    <script src="assets/js/index.js"></script>
-    <script src="assets/js/SETTING.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/setting.js"></script>
 </body>
 
 </html>
