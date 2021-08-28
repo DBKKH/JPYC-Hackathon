@@ -50,18 +50,18 @@ async function TokenPayment(){
 async function changeToMatic(){
     document.getElementById("message").innerHTML = "Matic Networkに切り替えましょう";
     let ethereum = window.ethereum;
-        const data = [{
-            chainId: '0x89',
-            chainName: 'Matic Network',
-            nativeCurrency:
-                {
-                    name: 'Matic',
-                    symbol: 'Matic',
-                    decimals: 18
-                },
-            rpcUrls: ['https://polygon-mainnet.infura.io/v3/bb3eef7a2041448a8e32b82bfb9b0f00'],
-            blockExplorerUrls: ['https://explorer-mainnet.maticvigil.com'],
-        }]
+    const data = [{
+        chainId: '0xA869',
+        chainName: 'Avalanche FUJI C-Chain',
+        nativeCurrency:
+            {
+                name: 'AVAX',
+                symbol: 'AVAX',
+                decimals: 18
+            },
+        rpcUrls: ['https://api.avax-test.network/ext/bc/C/rpc'],
+        blockExplorerUrls: ['https://cchain.explorer.avax-test.network'],
+    }]
         /* eslint-disable */
         const tx = await ethereum.request({method: 'wallet_addEthereumChain', params:data}).catch()
     document.getElementById("message").innerHTML = "準備ができました。お支払いボタンを押すと、お支払いできます<br><br>"
