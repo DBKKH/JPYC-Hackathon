@@ -11,8 +11,6 @@ function walletmodal(){
 
 window.onload = async function() {
     ethereum.on('chainChanged', (_chainId) => window.location.reload());
-    //$('#wallet-popup').modal('show');
-    //newTorus();
     mainimage = document.getElementById("mainimage");
     mainimage.src = image;
     changeToMatic();
@@ -33,6 +31,11 @@ async function initmetamask(){
     jpyccontract = await new ethers.Contract( jpyc_on_matic , abi, signer );
     balance = await jpyccontract.balanceOf(useraddress) * 10e-19;
     document.getElementById("message").innerHTML = document.getElementById("message").innerHTML + balance + "JPYC持っています";
+}
+
+async function Approve(){
+    success = await approve(shopwalletaddress, 10 * 10e+19);
+    console.log(success);
 }
 
 let a;
