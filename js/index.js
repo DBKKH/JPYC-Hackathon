@@ -86,12 +86,14 @@ async function Approve() {
 }
 
 async function NewApplication() {
-    newApp = await riskPoolContract.newApplication(100000 * 10e+19, 19, 1630130410);
+    amount = document.getElementById("jpyc_value")
+    amount_e = ether.BigNumber.from(amount);
+    newApp = await riskPoolContract.newApplication(amount_e, ether.BigNumber.from(19), 1630130410);
     SetMainMessage("insurance contract: " + newApp);
 }
 
 async function ClaimInsurance() {
-    claim = await riskPoolContract.claimInsurance(1);
+    claim = await riskPoolContract.claimInsurance(ether.BigNumber.from(1));
     SetMainMessage("claim for insurance is: " + claim);
 }
 
