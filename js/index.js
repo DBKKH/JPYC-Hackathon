@@ -88,7 +88,7 @@ async function Approve() {
     console.log(amount, amount_e);
     success = await jpycContract.approve(riskPoolAddress, amount_e);
     console.log(success);
-    SetMainMessage("approve is " + success);
+    SetMainMessage("approve is ssuccess");
 
     UpdateCurrentJpyc();
 }
@@ -98,17 +98,17 @@ async function NewApplication() {
     // id_e = ethers.BigNumber.from(19);
     // currentTime = ethers.BigNumber.from(1630130410);
 
-    console.log(amount, amount_e, id_e, currentTime);
+    console.log(amount);
 
     newApp = await riskPoolContract.newApplication(amount, 19, 1630130410);
-    SetMainMessage("insurance contract: " + newApp);
+    SetMainMessage("insurance contract ssuccess");
 
     UpdateCurrentJpyc();
 }
 
 async function ClaimInsurance() {
     claim = await riskPoolContract.claimInsurance(ethers.BigNumber.from(1));
-    SetMainMessage("claim for insurance is: " + claim);
+    SetMainMessage("claim for insurance is ssuccess");
 }
 
 function SetMainMessage(message) {
