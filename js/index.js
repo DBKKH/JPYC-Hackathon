@@ -23,6 +23,8 @@ async function Initmetamask() {
         SetMainMessage("Please open MetaMask");
     }
 
+    await ConnectMetaMask();
+
     provider = await new ethers.providers.Web3Provider(window.ethereum);
     console.log(provider);
 
@@ -31,8 +33,6 @@ async function Initmetamask() {
 
     userAddress = await signer.getAddress();
     console.log(userAddress);
-
-    await ConnectMetaMask();
 
     MakeJpycContract();
     MakeRiskPoolContract();
