@@ -80,20 +80,21 @@ async function MakeInvestedPoolContract() {
 
 async function Approve() {
     amount = document.getElementById("approve_amount")
-    success = await jpycContract.approve(riskPoolAddress, ethers.BigNumber.from(amount));
+    amount_e = ethers.utils.parseEther(amount);
+    success = await jpycContract.approve(riskPoolAddress, amount_e);
     console.log(success);
     SetMainMessage("approve is " + success);
 }
 
 async function NewApplication() {
     amount = document.getElementById("jpyc_value")
-    amount_e = ether.BigNumber.from(amount);
-    newApp = await riskPoolContract.newApplication(amount_e, ether.BigNumber.from(19), 1630130410);
+    amount_e = ethers.utils.parseEther(amount);
+    newApp = await riskPoolContract.newApplication(amount_e, ethers.utils.parseEther(19), 1630130410);
     SetMainMessage("insurance contract: " + newApp);
 }
 
 async function ClaimInsurance() {
-    claim = await riskPoolContract.claimInsurance(ether.BigNumber.from(1));
+    claim = await riskPoolContract.claimInsurance(ethers.utils.parseEther(1));
     SetMainMessage("claim for insurance is: " + claim);
 }
 
