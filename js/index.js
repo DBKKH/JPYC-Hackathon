@@ -53,10 +53,7 @@ async function onClickConnect() {
         const newAccounts = await ethereum.request({
             method: 'eth_requestAccounts',
         })
-        accounts = newAccounts;
-
-        accountsDiv.innerHTML = accounts;
-
+        console.log(newAccounts);
     } catch (error) {
         console.error(error);
     }
