@@ -1,10 +1,9 @@
-
 shopwalletaddress = "0xc504D069e291d8011c0Ca0E30731D97c702eF38C";
 
 pricing = 20000;
 
 jpyc_on_fuji = "0x1f27ef271970Cd0651D2aCA38EA8210DA77E41C1";
 
-riskPoolAddress = "";
+riskPoolAddress = "0x762Dc2d669bF18C995a72e24578510566f9029e8";
 
-investedPoolAddress = "";
+investedPoolAddress = "0x5600C45a3FaD125c19291ec84F609Dc542C15431";
