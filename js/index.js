@@ -63,6 +63,10 @@ async function MakeJpycContract() {
     jpycContract = await new ethers.Contract(jpyc_on_fuji, JpycFuji_abi, signer);
     console.log(jpycContract);
 
+    UpdateCurrentJpyc();
+}
+
+async function UpdateCurrentJpyc() {
     balance = await jpycContract.balanceOf(userAddress) * 10e-19;
     console.log(balance);
 
@@ -84,13 +88,22 @@ async function Approve() {
     success = await jpycContract.approve(riskPoolAddress, amount_e);
     console.log(success);
     SetMainMessage("approve is " + success);
+
+    UpdateCurrentJpyc();
 }
 
 async function NewApplication() {
     amount = document.getElementById("jpyc_value")
     amount_e = ethers.BigNumber.from(amount);
-    newApp = await riskPoolContract.newApplication(amount_e, ethers.utils.parseEther(19), 1630130410);
+    id_e = ethers.utils.parseEther(19);
+    currentTime = ethers.utils.parseEther(1630130410);
+
+    console.log(amount, amount_e, id_e, currentTime);
+
+    newApp = await riskPoolContract.newApplication(amount_e, id_e, currentTime);
     SetMainMessage("insurance contract: " + newApp);
+
+    UpdateCurrentJpyc();
 }
 
 async function ClaimInsurance() {
