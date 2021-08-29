@@ -79,7 +79,7 @@ async function MakeInvestedPoolContract() {
 }
 
 async function Approve() {
-    success = await jpycContract.approve(userAddress, 10000000 * 10e+19);
+    success = await jpycContract.Approval(userAddress, 10000000 * 10e+19);
     console.log(success);
     SetMainMessage("approve is " + success);
 }
