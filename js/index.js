@@ -66,7 +66,7 @@ async function MakeJpycContract() {
     balance = await jpycContract.balanceOf(userAddress) * 10e-19;
     console.log(balance);
 
-    document.getElementById("message").innerHTML += "<br>" + balance + "JPYC";
+    document.getElementById("message").innerHTML += balance + "JPYC";
 }
 
 async function MakeRiskPoolContract() {
@@ -79,7 +79,8 @@ async function MakeInvestedPoolContract() {
 }
 
 async function Approve() {
-    success = await jpycContract.approve(riskPoolAddress, 10000000 * 10e+19);
+    amount = document.getElementById("approve_amount")
+    success = await jpycContract.approve(riskPoolAddress, amount);
     console.log(success);
     SetMainMessage("approve is " + success);
 }
@@ -95,7 +96,7 @@ async function ClaimInsurance() {
 }
 
 function SetMainMessage(message) {
-    document.getElementById("message").innerHTML = message;
+    document.getElementById("message").innerHTML = message + "<br>";
 }
 
 async function ChangeToMatic() {
