@@ -49,10 +49,10 @@ async function ConnectMetaMask() {
 
 async function onClickConnect() {
     try {
-        //アカウントへの接続を要求
         const newAccounts = await ethereum.request({
             method: 'eth_requestAccounts',
-        })
+        });
+
         console.log(newAccounts);
     } catch (error) {
         console.error(error);
@@ -79,7 +79,12 @@ async function MakeRiskPoolContract() {
 
 
 async function MakeInvestedPoolContract() {
-    riskPoolContract = await new ethers.Contract(investedPoolAddress, riskPool_abi, signer);
+    riskPoolContract = await new ethers.Contract(investedPoolAddress,
+        riskPool_abi, {
+            from: accounts[0],
+            gasPrice: 1000,
+            gas: 100000
+        });
 }
 
 async function Approve() {
