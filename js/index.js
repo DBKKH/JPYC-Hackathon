@@ -40,7 +40,7 @@ async function Initmetamask() {
 }
 
 async function ConnectMetaMask() {
-    const accounts = await ethers.request({ method: 'eth_requestAccounts' });
+    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     console.log(accounts);
 
     const account = accounts[0];
