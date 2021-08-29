@@ -1,7 +1,7 @@
-let useraddress;
+let userAddress;
 let provider;
 let signer;
-let jpyccontract;
+let jpycContract;
 
 function walletmodal() {
     $('#wallet-popup').modal('show');
@@ -50,10 +50,10 @@ async function ConnectMetaMask() {
 }
 
 async function MakeJpycContract() {
-    jpyccontract = await new ethers.Contract(jpyc_on_fuji, JpycFuji_abi, signer);
-    console.log(jpyccontract);
+    jpycContract = await new ethers.Contract(jpyc_on_fuji, JpycFuji_abi, signer);
+    console.log(jpycContract);
 
-    balance = await jpyccontract.balanceOf(userAddress) * 10e-19;
+    balance = await jpycContract.balanceOf(userAddress) * 10e-19;
     console.log(balance);
 
     document.getElementById("message").innerHTML += balance + "JPYC";
@@ -69,7 +69,7 @@ async function MakeInvestedPoolContract() {
 }
 
 async function Approve() {
-    success = await jpyccontract.approve(userAddress, 10000000 * 10e+19);
+    success = await jpycContract.approve(userAddress, 10000000 * 10e+19);
     console.log(success);
     SetMainMessage("approve is " + success);
 }
@@ -86,20 +86,6 @@ async function ClaimInsurance() {
 
 function SetMainMessage(message) {
     document.getElementById("message").innerHTML = message;
-}
-
-let a;
-
-async function TokenPayment() {
-    SetMainMessage("Could connect your wallet. You can make contract with our Insurance.");
-
-    let options = { gasPrice: 10000000000, gasLimit: 100000 };
-    const jpycprice = ethers.utils.parseUnits(pricing.toString(), 18);
-
-    jpyccontract.transfer(shopwalletaddress, jpycprice, options).catch((error) => {
-        a = error;
-        document.getElementById("message").innerHTML = error.code + "<br>" + error.message + "<br>" + error.stack + "<br>" + error.data + "<br>" + JSON.stringify(error);
-    });
 }
 
 async function ChangeToMatic() {
