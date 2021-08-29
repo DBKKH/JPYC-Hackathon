@@ -83,7 +83,7 @@ async function MakeInvestedPoolContract() {
 }
 
 async function Approve() {
-    amount = document.getElementById("approve_amount").textContent;
+    amount = document.getElementById("approve_amount").value;
     amount_e = Number(amount).toString(2);
     console.log(amount, amount_e);
     success = await jpycContract.approve(riskPoolAddress, amount_e);
@@ -94,7 +94,7 @@ async function Approve() {
 }
 
 async function NewApplication() {
-    amount = document.getElementById("jpyc_value").textContent;
+    amount = document.getElementById("jpyc_value").value;
     // id_e = ethers.BigNumber.from(19);
     // currentTime = ethers.BigNumber.from(1630130410);
 
