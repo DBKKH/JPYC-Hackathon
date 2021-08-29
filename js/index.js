@@ -79,21 +79,17 @@ async function UpdateCurrentJpyc() {
 
 async function MakeRiskPoolContract() {
     riskPoolContract = await new ethers.Contract(riskPoolAddress,
-        riskPool_abi, {
-            from: accounts[0],
-            gasPrice: 10,
-            gas: 100000
-        });
+        riskPool_abi,
+        signer
+    );
 }
 
 
 async function MakeInvestedPoolContract() {
     investedPoolContract = await new ethers.Contract(investedPoolAddress,
-        investedPool_abi, {
-            from: accounts[0],
-            gasPrice: 10,
-            gas: 100000
-        });
+        investedPool_abi,
+        signer
+    );
 }
 
 async function Approve() {
