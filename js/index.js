@@ -2,6 +2,8 @@ var userAddress;
 var provider;
 var signer;
 var jpycContract;
+var riskPoolContract;
+var investedPoolContract;
 
 function walletmodal() {
     $('#wallet-popup').modal('show');
@@ -79,7 +81,7 @@ async function MakeRiskPoolContract() {
     riskPoolContract = await new ethers.Contract(riskPoolAddress,
         riskPool_abi, {
             from: accounts[0],
-            gasPrice: 1000,
+            gasPrice: 10,
             gas: 100000
         });
 }
@@ -89,7 +91,7 @@ async function MakeInvestedPoolContract() {
     investedPoolContract = await new ethers.Contract(investedPoolAddress,
         investedPool_abi, {
             from: accounts[0],
-            gasPrice: 1000,
+            gasPrice: 10,
             gas: 100000
         });
 }
@@ -107,13 +109,16 @@ async function Approve() {
 
 async function NewApplication() {
     amount = document.getElementById("jpyc_value").value;
-    amount_e = Number(amount).toString(2);
     console.log(amount);
 
-    newApp = await riskPoolContract.newApplication(amount_e, 19, 1630130410);
+    newApp = await riskPoolContract.newApplication(ToBin(amount), ToBin(19), ToBin(1630130410));
     SetMainMessage("insurance contract ssuccess");
 
     UpdateCurrentJpyc();
+}
+
+function ToBin(val) {
+    return Number(val).toString(2);
 }
 
 async function ClaimInsurance() {
