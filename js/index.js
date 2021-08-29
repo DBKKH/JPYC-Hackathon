@@ -86,8 +86,8 @@ async function MakeRiskPoolContract() {
 
 
 async function MakeInvestedPoolContract() {
-    riskPoolContract = await new ethers.Contract(investedPoolAddress,
-        riskPool_abi, {
+    investedPoolContract = await new ethers.Contract(investedPoolAddress,
+        investedPool_abi, {
             from: accounts[0],
             gasPrice: 1000,
             gas: 100000
@@ -107,9 +107,6 @@ async function Approve() {
 
 async function NewApplication() {
     amount = document.getElementById("jpyc_value").value;
-    // id_e = ethers.BigNumber.from(19);
-    // currentTime = ethers.BigNumber.from(1630130410);
-
     console.log(amount);
 
     newApp = await riskPoolContract.newApplication(amount, 19, 1630130410);
@@ -119,7 +116,8 @@ async function NewApplication() {
 }
 
 async function ClaimInsurance() {
-    claim = await riskPoolContract.claimInsurance(ethers.BigNumber.from(1));
+    amount = document.getElementById("claim_value").value;
+    claim = await riskPoolContract.claimInsurance(amount);
     SetMainMessage("claim for insurance is ssuccess");
 }
 
