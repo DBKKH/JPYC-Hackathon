@@ -32,9 +32,21 @@ async function Initmetamask() {
     userAddress = await signer.getAddress();
     console.log(userAddress);
 
+    await ConnectMetaMask();
+
     MakeJpycContract();
     MakeRiskPoolContract();
     MakeInvestedPoolContract();
+}
+
+async function ConnectMetaMask() {
+    const accounts = await ethers.request({ method: 'eth_requestAccounts' });
+    console.log(accounts);
+
+    const account = accounts[0];
+    console.log(account);
+
+    showAccount.innerHTML = account;
 }
 
 async function MakeJpycContract() {
