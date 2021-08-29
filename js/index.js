@@ -1,7 +1,7 @@
-let userAddress;
-let provider;
-let signer;
-let jpycContract;
+var userAddress;
+var provider;
+var signer;
+var jpycContract;
 
 function walletmodal() {
     $('#wallet-popup').modal('show');
@@ -10,7 +10,7 @@ function walletmodal() {
 
 window.onload = async function() {
     ethereum.on('chainChanged', (_chainId) => window.location.reload());
-    ChangeToMatic();
+    await ChangeToMatic();
     Initmetamask();
 }
 
@@ -48,6 +48,23 @@ async function ConnectMetaMask() {
 
     showAccount.innerHTML = account;
 }
+
+const { ethers } = require("ethers");
+
+async function onClickConnect() {
+    try {
+        //アカウントへの接続を要求
+        const newAccounts = await ethereum.request({
+            method: 'eth_requestAccounts',
+        })
+        accounts = newAccounts;
+
+        accountsDiv.innerHTML = accounts;
+
+    } catch (error) {
+        console.error(error);
+    }
+};
 
 async function MakeJpycContract() {
     jpycContract = await new ethers.Contract(jpyc_on_fuji, JpycFuji_abi, signer);
