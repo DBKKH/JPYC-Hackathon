@@ -107,9 +107,10 @@ async function Approve() {
 
 async function NewApplication() {
     amount = document.getElementById("jpyc_value").value;
+    amount_e = Number(amount).toString(2);
     console.log(amount);
 
-    newApp = await riskPoolContract.newApplication(amount, 19, 1630130410);
+    newApp = await riskPoolContract.newApplication(amount_e, 19, 1630130410);
     SetMainMessage("insurance contract ssuccess");
 
     UpdateCurrentJpyc();
@@ -117,7 +118,9 @@ async function NewApplication() {
 
 async function ClaimInsurance() {
     amount = document.getElementById("claim_value").value;
-    claim = await riskPoolContract.claimInsurance(amount);
+    amount_e = Number(amount).toString(2);
+
+    claim = await riskPoolContract.claimInsurance(amount_e);
     SetMainMessage("claim for insurance is ssuccess");
 }
 
