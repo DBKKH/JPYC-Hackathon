@@ -39,7 +39,7 @@ async function Initmetamask() {
     MakeInvestedPoolContract();
 }
 
-const accounts;
+var accounts;
 
 async function ConnectMetaMask() {
     accounts = await ethereum.request({ method: 'eth_requestAccounts' });
