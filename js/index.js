@@ -84,7 +84,7 @@ async function MakeInvestedPoolContract() {
 
 async function Approve() {
     amount = document.getElementById("approve_amount")
-    amount_e = Number(amount);
+    amount_e = Number(amount).toString(2);
     success = await jpycContract.approve(riskPoolAddress, amount_e);
     console.log(success);
     SetMainMessage("approve is " + success);
