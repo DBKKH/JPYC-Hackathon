@@ -45,11 +45,7 @@ async function ConnectMetaMask() {
 
     const account = accounts[0];
     console.log(account);
-
-    showAccount.innerHTML = account;
 }
-
-const { ethers } = require("ethers");
 
 async function onClickConnect() {
     try {
