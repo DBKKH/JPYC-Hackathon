@@ -1,8 +1,87 @@
 #content {
     position: relative;
 }
+
 #content img {
     position: absolute;
     top: 0px;
     right: 0px;
+}
+
+.profile-mv {
+    height: auto;
+    background-color: skyblue;
+    padding-top: 30px;
+}
+
+.profile-mv-wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+}
+
+
+/* 下記追加 */
+
+.profile-mv-wrap-left {
+    display: flex;
+    align-items: flex-end;
+    /* 下揃え */
+}
+
+.profile-mv-wrap-right {
+    display: flex;
+    align-items: center;
+}
+
+.profile-mv-wrap-right h1 {
+    font-size: 56px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+
+
+/* ヘッダーを幅いっぱいにする為のボックス*/
+
+#headerbg {
+    background-image: url(https://imgs.coinpost-ext.com/uploads/2021/07/Avalanche-Logo-640x336.png);
+    width: 100%;
+    min-width: 1000px;
+}
+
+
+/* ヘッダー*/
+
+#header {
+    width: 940px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+/* メインボックス*/
+
+#container {
+    width: 940px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+/* フッターを幅いっぱいにする為のボックス*/
+
+#footerbg {
+    background-image: url(https://imgs.coinpost-ext.com/uploads/2021/07/Avalanche-Logo-640x336.png);
+    width: 100%;
+    min-width: 1000px;
+}
+
+
+/* フッター*/
+
+#footer {
+    width: 940px;
+    margin-right: auto;
+    margin-left: auto;
 }

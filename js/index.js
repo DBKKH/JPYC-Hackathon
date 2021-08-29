@@ -1,10 +1,9 @@
-
 let useraddress;
 let provider;
 let signer;
 let jpyccontract;
 
-function walletmodal(){
+function walletmodal() {
     $('#wallet-popup').modal('show');
 }
 
@@ -16,50 +15,59 @@ window.onload = async function() {
 }
 
 
-async function Initmetamask(){
-    
-    if (window.ethereum !== undefined){
+async function Initmetamask() {
+
+    if (window.ethereum !== undefined) {
         SetMainMessage("Connected MetaMask");
     } else {
         SetMainMessage("Please open MetaMask");
     }
 
     provider = await new ethers.providers.Web3Provider(window.ethereum);
+    console.log(provider);
+
     signer = await provider.getSigner();
-    userAddress = await signer.getAddress();    
-    
+    console.log(signer);
+
+    userAddress = await signer.getAddress();
+    console.log(userAddress);
+
     MakeJpycContract();
     MakeRiskPoolContract();
     MakeInvestedPoolContract();
 }
 
-async function MakeJpycContract(){
-    jpyccontract = await new ethers.Contract( jpyc_on_fuji , JpycFuji_abi, signer );
+async function MakeJpycContract() {
+    jpyccontract = await new ethers.Contract(jpyc_on_fuji, JpycFuji_abi, signer);
+    console.log(jpyccontract);
+
     balance = await jpyccontract.balanceOf(userAddress) * 10e-19;
+    console.log(balance);
+
     document.getElementById("message").innerHTML += balance + "JPYC";
 }
 
-async function MakeRiskPoolContract(){
-    riskPoolContract = await new ethers.Contract( riskPoolAddress , riskPool_abi, signer );
+async function MakeRiskPoolContract() {
+    riskPoolContract = await new ethers.Contract(riskPoolAddress, riskPool_abi, signer);
 }
 
 
-async function MakeInvestedPoolContract(){
-    riskPoolContract = await new ethers.Contract( investedPoolAddress , riskPool_abi, signer );
+async function MakeInvestedPoolContract() {
+    riskPoolContract = await new ethers.Contract(investedPoolAddress, riskPool_abi, signer);
 }
 
-async function Approve(){
+async function Approve() {
     success = await jpyccontract.approve(userAddress, 10000000 * 10e+19);
     console.log(success);
     SetMainMessage("approve is " + success);
 }
 
-async function NewApplication(){
+async function NewApplication() {
     newApp = await riskPoolContract.newApplication(100000 * 10e+19, 19, 1630130410);
     SetMainMessage("insurance contract: " + newApp);
 }
 
-async function ClaimInsurance(){
+async function ClaimInsurance() {
     claim = await riskPoolContract.claimInsurance(1);
     SetMainMessage("claim for insurance is: " + claim);
 }
@@ -70,35 +78,34 @@ function SetMainMessage(message) {
 
 let a;
 
-async function TokenPayment(){
+async function TokenPayment() {
     SetMainMessage("Could connect your wallet. You can make contract with our Insurance.");
 
-    let options = { gasPrice: 10000000000 , gasLimit: 100000};
-    const jpycprice = ethers.utils.parseUnits( pricing.toString() , 18);
-    
-    jpyccontract.transfer( shopwalletaddress , jpycprice , options ).catch((error) => {
-    a=error;
-    document.getElementById("message").innerHTML = error.code + "<br>" + error.message + "<br>" + error.stack + "<br>" + error.data + "<br>" + JSON.stringify(error);
+    let options = { gasPrice: 10000000000, gasLimit: 100000 };
+    const jpycprice = ethers.utils.parseUnits(pricing.toString(), 18);
+
+    jpyccontract.transfer(shopwalletaddress, jpycprice, options).catch((error) => {
+        a = error;
+        document.getElementById("message").innerHTML = error.code + "<br>" + error.message + "<br>" + error.stack + "<br>" + error.data + "<br>" + JSON.stringify(error);
     });
 }
 
-async function ChangeToMatic(){
+async function ChangeToMatic() {
     document.getElementById("message").innerHTML = "Please change network";
     let ethereum = window.ethereum;
     const data = [{
-        chainId: '0xA869',
-        chainName: 'Avalanche FUJI C-Chain',
-        nativeCurrency:
-            {
+            chainId: '0xA869',
+            chainName: 'Avalanche FUJI C-Chain',
+            nativeCurrency: {
                 name: 'AVAX',
                 symbol: 'AVAX',
                 decimals: 18
             },
-        rpcUrls: ['https://api.avax-test.network/ext/bc/C/rpc'],
-        blockExplorerUrls: ['https://cchain.explorer.avax-test.network'],
-    }]
+            rpcUrls: ['https://api.avax-test.network/ext/bc/C/rpc'],
+            blockExplorerUrls: ['https://cchain.explorer.avax-test.network'],
+        }]
         /* eslint-disable */
-        const tx = await ethereum.request({method: 'wallet_addEthereumChain', params:data}).catch();
+    const tx = await ethereum.request({ method: 'wallet_addEthereumChain', params: data }).catch();
 
-        SetMainMessage("Could connect your wallet. You can make contract with our Insurance.<br> <br>");
+    SetMainMessage("Could connect your wallet. You can make contract with our Insurance.<br> <br>");
 }

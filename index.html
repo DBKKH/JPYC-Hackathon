@@ -8,61 +8,14 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 
-<body style="background: linear-gradient(90deg, rgb(31, 64, 255) 0%, rgb(206,199,236));">
-    
-    <!-- <div class="row">
-        <div class="col">
-            <h1 class="text-center"> Insurance </h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2 offset-5">
-            <div class="text-center" style="width: 100%;"><img id="mainimage" src="img/tropical_drink.png"
-                    style="width: 100%;" width="100%">
-                <h2 class="text-center" id="pricing">JPYC on AVAX</h2><a class="btn btn-info text-center" role="button"
-                    href="javascript:TokenPayment()">JPYC Payment</a>
-            </div>
-        </div> -->
+<body style="background: linear-gradient(90deg, rgb(206,199,236) 0%, rgb(31, 64, 255));">
 
-        <!-- <input type="hidden" name="jpyc_value" placeholder="100"> -->
-
-        <!-- <div class="col-2 offset-1">
-            <h2 class="text-center" id="approval"></h2><a class="btn btn-info text-center" role="button"
-                href="javascript:Approve()">Approve</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h2 id="message" style="margin-top: 50px;text-align: center;">Loading...</h2>
-        </div>
-    </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="wallet-popup">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">select wallet</h4><button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close"><span aria-hidden="true">×</span></button>
-                </div>
-                <div class="modal-body">
-                    <div style="text-align: center;"><a href="javascript:loadwallet()"><img
-                                src="img/mm-logo.svg"></a><a href="javascript:loadTorus()"><img
-                                src="img/torus-wordmark-blue-p-500.png"
-                                style="width: 100px;margin-left: 32px;"></a></div>
-                </div>
-                <div class="modal-footer">
-                    <p>Please change network</p>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    
     <div id="content">
-        <img src="img/jpyc-icon.png" class="ribbon"/>
+        <img src="img/jpyc-icon.png" class="ribbon" />
     </div>
 
     <div class="col-2 offset-1">
-        <h2 class="text-center" id="approval"></h2><a class="btn btn-info text-center" role="button"
-            href="javascript:Approve()">Approve</a>
+        <h2 class="text-center" id="approval"></h2><a class="btn btn-info text-center" role="button" href="javascript:Approve()">Approve</a>
     </div>
 
     <div class="row">
@@ -81,12 +34,12 @@
             <input type="text" class="form-control" id="last_name" placeholder="Dann">
         </div>
     </div>
-    
+
     <div class="form-group col-md-2">
         <label for="inputPassword4">Country</label>
         <input type="text" class="form-control" id="country_input" placeholder="Japan">
     </div>
-    
+
     <div>
         <div class="form-group col-md-3">
             <label for="inputPassword4">Post Code</label>
@@ -102,13 +55,26 @@
         <label for="inputPassword4">jpyc</label>
         <input type="text" class="form-control" id="jpyc_value" placeholder="Japan">
     </div>
-    
+
+    <br>
+
     <div>
         <button class="btn btn-primary" onclick="NewApplication()"> Confirm your infomation </button>
         <button class="btn btn-primary" onclick="ClaimInsurance()"> Send Claim </button>
     </div>
 
-    
+    <br>
+
+    <br>
+
+    <section class="profile-mv">
+        <div class="profile-mv-wrap">
+            <div class="profile-mv-wrap-left">
+                <img src="https://imgs.coinpost-ext.com/uploads/2021/07/Avalanche-Logo-640x336.png">
+            </div>
+        </div>
+    </section>
+
     <!--  for contract scripts  -->
     <script type="text/javascript" src="js/libs/jquery.min.js"></script>
     <script src="js/libs/ethers-5.0.umd.min.js"></script>
